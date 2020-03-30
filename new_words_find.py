@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # @Time    : 20-3-30 下午5:27
 # @Author  : ivy_nie
-# @File    : new_words.py
+# @File    : new_words_find.py
 # @Software: PyCharm
 
 from collections import Counter
