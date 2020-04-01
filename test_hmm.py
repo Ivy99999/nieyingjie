@@ -132,7 +132,7 @@ class HMM(object):
 hmm = HMM()
 hmm.train('./msr_training.utf8')
 
-text = '这是一个非常棒的方案！'
+text = '同志我喜欢你'
 res = hmm.cut(text)
 print(text)
 print(res)
