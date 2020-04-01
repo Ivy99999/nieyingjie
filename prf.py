@@ -4,7 +4,7 @@
 # @Author  : ivy_nie
 # @File    : prf.py
 # @Software: PyCharm
-
+from test_hmm import *
 def text2tuple(path, cut=True, J=False):
     import jieba
     with open(path) as f:
