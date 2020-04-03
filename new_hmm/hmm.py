@@ -1,10 +1,6 @@
 #!usr/bin/env python3
 # -*- coding:utf-8 -*-
 
-"""
-
-"""
-import numpy as np
 import copy
 import json
 
@@ -32,6 +28,10 @@ class HMM(object):
 	def get_train_data(self,filepath):
 		# with open(filepath,'r',encoding='utf-8') as f:  # 用with读完就会close，self.train_data变成None了
 		self.train_data=open(filepath,'r',encoding='utf-8')
+
+	# def get_train_data(self,filepath):
+	# 	# with open(filepath,'r',encoding='utf-8') as f:  # 用with读完就会close，self.train_data变成None了
+	# 	self.train_data=open(filepath,'r',encoding='utf-8')
 
 	def train(self,observe_seq,state_seq):
 		last_s = -1
@@ -111,16 +111,3 @@ class HMM(object):
 		self.init_P_array=data['init_P_array']
 		self.state_count=data['state_count']
 		return self.tran_p_array,self.emit_p_array,self.init_P_array,self.state_count
-
-
-
-
-
-
-
-
-
-
-
-
-

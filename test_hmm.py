@@ -127,12 +127,17 @@ class HMM(object):
                 result.append(char)
 
         return result
-
-
+#
+#
 hmm = HMM()
-hmm.train('./msr_training.utf8')
+hmm.train('CTBtrainingset.txt')
 
-text = '同志我喜欢你'
+text = "就像是一场梦，醒来很久还是很感动"
 res = hmm.cut(text)
 print(text)
 print(res)
+text="很久"
+import jieba
+word=jieba.cut(text)
+for i in word:
+    print(i)

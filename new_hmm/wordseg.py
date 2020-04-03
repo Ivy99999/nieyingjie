@@ -5,8 +5,10 @@
 
 """
 
-import hmm
+
 import re
+
+from new_hmm import hmm
 
 STATES = ['B', 'M', 'E', 'S']
 
@@ -28,26 +30,27 @@ def add_tags(word):
 
 hmm_obj = hmm.HMM(STATES)
 
-# hmm_obj.get_train_data('CTBtrainingset.txt')
-#
-# for line in hmm_obj.train_data:
-# 	if len(line) == 0:
-# 		continue
-# 	word_lst = re.split('\s+', line.strip())  # 切掉全部空格
-# 	observes = []
-# 	states = []
-# 	for w in word_lst:
-# 		tags, char_lst = add_tags(w)
-# 		observes.extend(char_lst)
-# 		states.extend(tags)
-# 	hmm_obj.train(observes, states)
-#
-# hmm_obj.count2prob()
-# hmm_obj.save()
+hmm_obj.get_train_data('CTBtrainingset.txt')
+
+for line in hmm_obj.train_data:
+	if len(line) == 0:
+		continue
+	word_lst = re.split('\s+', line.strip())  # 切掉全部空格
+	observes = []
+	states = []
+	for w in word_lst:
+		tags, char_lst = add_tags(w)
+		observes.extend(char_lst)
+		states.extend(tags)
+	hmm_obj.train(observes, states)
+
+hmm_obj.count2prob()
+hmm_obj.save()
 print(hmm_obj.load())
 
 def cut(sen,tags):
 	s=list(sen)
+	print(tags)
 	tags=''.join(tags)
 	lst=re.finditer('BE{1}|BME{1}',tags)
 	count=0  # 已插入空格的数量
@@ -64,8 +67,9 @@ def cut(sen,tags):
 
 test = '就像是一场梦，醒来很久还是很感动！'
 test_tags=hmm_obj.predict(test)
+# print('这是啥',p,test_tags)
 print(cut(test,test_tags))
-
-test = '淡黄的长裙，蓬松的头发，你牵着我的手看最新展出的油画。'
-test_tags=hmm_obj.predict(test)
-print(cut(test,test_tags))
+#
+# test = '淡黄的长裙，蓬松的头发，你牵着我的手看最新展出的油画。'
+# test_tags=hmm_obj.predict(test)
+# print(cut(test,test_tags))

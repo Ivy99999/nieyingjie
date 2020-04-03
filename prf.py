@@ -19,6 +19,7 @@ def text2tuple(path, cut=True, J=False):
                     res = jieba.cut(line)
                 else:
                     res = hmm.cut(line)
+                    print(res)
             dic[i] = []
             num = 0
             for s in res:
